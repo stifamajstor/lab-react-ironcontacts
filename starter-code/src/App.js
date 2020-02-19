@@ -29,10 +29,26 @@ class App extends Component {
     }
   };
 
+  sortPop = () => {
+    let popArr = this.state.contactsList;
+    popArr.sort((a, b) => (a.popularity < b.popularity ? 1 : -1));
+    console.log(popArr);
+    this.setState({ contactList: popArr });
+  };
+
+  sortName = () => {
+    let nameArr = this.state.contactsList;
+    nameArr.sort((a, b) => (a.name > b.name ? 1 : -1));
+    console.log(nameArr);
+    this.setState({ contactList: nameArr });
+  };
+
   render() {
     return (
       <div className="App">
         <button onClick={this.randomContact}> Random person</button>
+        <button onClick={this.sortPop}> sort by pop</button>
+        <button onClick={this.sortName}> sort by name</button>
         <Contacts contacts={this.state.contactsList} />
       </div>
     );
